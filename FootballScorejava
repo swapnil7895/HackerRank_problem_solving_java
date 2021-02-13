@@ -1,0 +1,43 @@
+/*
+breaking the records
+Maria plays college basketball and wants to go pro. Each season she maintains a record of her play. She tabulates the number of times she breaks her season record for most points and least points in a game. Points scored in the first game establish her record for the season, and she begins counting from there.
+LINK -- 
+https://www.hackerrank.com/challenges/breaking-best-and-worst-records/problem
+*/
+import java.util.*;
+public class FootballScore
+{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n=sc.nextInt(); 
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++)
+        {
+            arr[i]=sc.nextInt();
+        }  
+        //int firstScore;
+        int scr_brk=0;
+        int wrst_scr=0;
+        int high=arr[0];
+        //9
+        //10 5 20 20 4 5 2 25 1
+        // 2 4
+        //3 4 21 36 10 28 35 5 24 42
+        int fHigh=arr[0];
+        int Wlow=arr[0];
+        for(int j=1;j<n;j++)
+        {
+                    
+            if(high>arr[j] && Wlow>arr[j]){wrst_scr++;}
+            if(high<arr[j] && fHigh<arr[j]){scr_brk++;}
+            high=arr[j];
+            if(fHigh<arr[j])
+            {fHigh=arr[j];}
+            if(Wlow>arr[j])
+            {Wlow=arr[j];}
+        }
+        System.out.print(scr_brk);
+        System.out.print(" "+wrst_scr);
+    }
+
+}
